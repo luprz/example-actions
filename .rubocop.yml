@@ -1,0 +1,23 @@
+AllCops:
+  Exclude:
+    - 'Rakefile'
+    - 'Guardfile'
+    - 'config.ru'
+    - 'lib/**/*'
+    - 'test/**/*'
+    - 'config/**/*.rb'
+    - 'config/*.rb'
+    - 'db/**/*.rb'
+    - 'vendor/**/*'
+    - 'bin/*'
+    - 'Gemfile'
+    - 'spec/support/*'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/**/**.rb'
+
+Style/ClassAndModuleChildren:
+  Enabled: false
