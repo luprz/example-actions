@@ -35,7 +35,7 @@ jobs:
         bundle exec rake
     - name: Create Database
       run: |
-        rake db:create db:migrate RAILS_ENV=test
+        rake db:create db:migrate
     - name: Run Test
       run: |
         bundle exec rspec
