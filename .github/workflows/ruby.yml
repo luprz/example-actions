@@ -33,9 +33,9 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3
         bundle exec rake
-    - name: Create database
-      - run: |
+    - name: Create Database
+      run: |
         rake db:create db:migrate RAILS_ENV=test
-    - name: Run test
-      - run: |
+    - name: Run Test
+      run: |
         bundle exec rspec
