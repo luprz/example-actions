@@ -1,6 +1,6 @@
 name: Test and Linters
 
-on: [ push, pull_request ]
+on: [ pull_request ]
 
 jobs:
   build:
@@ -14,14 +14,9 @@ jobs:
       with:
         ruby-version: 2.6.x
 
-    - name: Pronto Run
-      uses: ./
-      with:
-        runners: >-
-          rubocop bundler_audit brakeman
-      env:
-        GITHUB_TOKEN: 45f84d92a4a5ab59eccf20fbdbc5d769625caf07
-
+    - name: Run code review
+      run: |
+        PRONTO_GITHUB_ACCESS_TOKEN=45f84d92a4a5ab59eccf20fbdbc5d769625caf07 pronto run -f github_pr -c origin/master
 
     - name: Setup PostgreSQL
       uses: Harmon758/postgresql-action@v1.0.0
