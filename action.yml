@@ -1,0 +1,35 @@
+name: Pronto Ruby
+author: jbielick@adwerx.com
+description: Your all-in-one Pronto ruby code review automation.
+branding:
+  icon: code
+  color: red
+inputs:
+  runners:
+    description: >-
+      Space-separated list of pronto runners to run.
+      Must be the preinstalled runners (ruby only).
+    required: false
+    default: >-
+      rubocop
+  target:
+    description: >-
+      The git object to diff against when running pronto. Use this if you have a
+      specific branch you'd like to always use as a target for the diff to be reviewed
+      and that branch is not master. This defaults to origin/master or the target
+      of the pull request being opened (when the event is pull_request).
+    required: false
+    default: >-
+      origin/master
+runs:
+  using: docker
+  image: "docker://docker.io/adwerx/pronto-ruby:3.0"
+  args:
+    - run
+    - -r
+    - ${{ inputs.runners }}
+    - -c
+    - ${{ inputs.target }}
+    - -f
+    - text
+    - github_action_check_run
