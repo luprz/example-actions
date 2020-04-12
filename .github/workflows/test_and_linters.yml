@@ -13,19 +13,6 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-    
-
-    - name: Build and test with Rake
-      run: |
-        gem install bundler
-        bundle install --jobs 4 --retry 3
-        bundle exec rake
-        gem install pronto
-        gem install pronto-rubocop
-
-    - name: Run code review
-      run: |
-        PRONTO_GITHUB_ACCESS_TOKEN=45f84d92a4a5ab59eccf20fbdbc5d769625caf07 pronto run -f github_pr -c origin/master
 
     - name: Setup PostgreSQL
       uses: Harmon758/postgresql-action@v1.0.0
@@ -34,6 +21,19 @@ jobs:
         postgresql db: runa_access_control_test
         postgresql user: global_production
         postgresql password: lenovo
+
+    
+    - name: Build and test with Rake
+      run: |
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec rake
+        gem install pronto
+        gem install pronto-rubocop
+    
+    - name: Run code review
+      run: |
+        PRONTO_GITHUB_ACCESS_TOKEN=45f84d92a4a5ab59eccf20fbdbc5d769625caf07 pronto run -f github_pr -c origin/master
 
     - name: Create Database
       run: |
