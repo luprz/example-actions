@@ -58,6 +58,10 @@ group :development, :test do
   gem 'factory_bot_rails'
   # A library for generating fake data such as names, addresses, and phone numbers.
   gem 'faker', '1.8.7'
+
+  gem 'pronto'
+  gem 'pronto-rubocop', require: false
+  gem 'pronto-flay', require: false
 end
 
 group :development do
