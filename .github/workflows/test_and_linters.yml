@@ -14,13 +14,14 @@ jobs:
       with:
         ruby-version: 2.6.x
 
-    - name: Pronto Ruby
-    - uses: adwerx/pronto-ruby@v2.5
-      env:
-        GITHUB_TOKEN: 45f84d92a4a5ab59eccf20fbdbc5d769625caf07
+    - name: Pronto Run
+      uses: ./
       with:
         runners: >-
-          rubocop
+          rubocop bundler_audit brakeman
+      env:
+        GITHUB_TOKEN: 45f84d92a4a5ab59eccf20fbdbc5d769625caf07
+
 
     - name: Setup PostgreSQL
       uses: Harmon758/postgresql-action@v1.0.0

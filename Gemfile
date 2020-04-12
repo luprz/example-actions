@@ -59,9 +59,10 @@ group :development, :test do
   # A library for generating fake data such as names, addresses, and phone numbers.
   gem 'faker', '1.8.7'
 
-  gem 'pronto'
-  gem 'pronto-rubocop', require: false
-  gem 'pronto-flay', require: false
+  gem 'pronto', '~> 0.10'
+  gem 'pronto-rubocop', '~> 0.10'
+  gem 'pronto-brakeman', '~> 0.10'
+  gem 'pronto-bundler_audit', '~> 0.6'
 end
 
 group :development do
